@@ -1,0 +1,41 @@
+mappings:
+  etablissement:
+    subject: https://www.example.org/etablissement/$(siret)/
+    predicateobjects:
+      - [a, 'https://schema.org/LocalBusiness']
+      - ['https://schema.org/leiCode', $(siret)]
+      - ['https://schema.org/legalName', $(app_libelle_etablissement)]
+      - ['https://schema.org/iso6523Code', $(siret)]
+      - ['https://schema.org/GeoCoordinates', geo]
+      - ['https://example.org/activite', activite]
+      - ['rdfs:label', $(app_libelle_etablissement)]
+  adresse:
+    subject: https://www.example.org/adresse/$(adresse_2_ua)/
+    predicateobjects:
+      - [a, 'https://schema.org/PostalAddress']
+      - ['https://schema.org/streetAddress', $(adresse_2_ua)]
+      - ['https://schema.org/postalCode', $(code_postal)]
+      - ['https://schema.org/addressLoality', $(libelle_commune)]
+      - ['rdfs:label', $(adresse_2_ua)]
+  geo:
+    subject: https://www.example.org/geo/$(adresse_2_ua)/
+    predicateobjects: 
+      - [a, 'https://schema.org/GeoCoordinates']
+      - ['https://schema.org/PostalAddress', adresse]
+#      - ['https://schema.org/latitude', $(geores[0])]
+#      - ['https://schema.org/longitude', $(geores[1])]
+  inspection:
+    subject: https://www.example.org/inspection/$(numero_inspection)
+    predicateobjects:
+      - [a, 'https://www.example.org/Inspection']
+      - ['https://schema.org/LocalBusiness', etablissement]
+      - ['https://www.example.org/evaluation', $(synthese_eval_sanit)]
+      - ['https://www.example.org/date_inspection', $(date_inspection)]
+  activite:
+    subject: https://www.example.org/activite/$(app_libelle_activite_etablissement)
+    predicateobjects:
+      - [a, 'https://www.example.org/Activite']
+      - ['https://www.example.org/activite/ods_activite', $(ods_type_activite)]
+      - ['rdfs:label', $(app_libelle_activite_etablissement)]
+  
+
