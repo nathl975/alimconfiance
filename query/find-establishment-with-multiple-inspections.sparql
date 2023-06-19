@@ -10,7 +10,7 @@ WHERE {
         <https://schema.org/LocalBusiness> ?etablissement.
 
     ?inspection <https://schema.org/Date> ?dateInspection.
-    FILTER EXISTS{
+    FILTER NOT EXISTS{
         ?autreInspection <https://schema.org/Date> ?dateInspection.
     }
 }

@@ -3,5 +3,5 @@ SELECT ?nom WHERE {
         <https://schema.org/GeoCoordinates> ?coordinates;
         <https://schema.org/legalName> ?nom.
     ?coordinates <https://schema.org/PostalAddress> ?adresse.
-    ?adresse <https://schema.org/addressLoality> "NANTERRE".
+    ?adresse <https://schema.org/addressLocality> "NANTERRE".
 }

@@ -1,4 +1,4 @@
-SELECT ?codePostal (COUNT(?inspection) AS ?count)
+SELECT ?ville ?codePostal (COUNT(?inspection) AS ?count)
 WHERE {
   ?inspection a <https://www.example.org/Inspection>.
   ?inspection <https://www.example.org/evaluation> ?synthese.
@@ -6,8 +6,9 @@ WHERE {
   ?inspection <https://schema.org/LocalBusiness> ?etablissement.
   ?etablissement <https://schema.org/GeoCoordinates> ?coordinates.
   ?coordinates <https://schema.org/PostalAddress> ?adresse.
-  ?adresse <https://schema.org/postalCode> ?codePostal.
+  ?adresse <https://schema.org/postalCode> ?codePostal;
+    <https://schema.org/addressLocality> ?ville.  
 
   FILTER (?synthese IN ("Satisfaisant", "Très satisfaisant"))
-} GROUP BY ?codePostal HAVING (COUNT(?inspection) > 2) 
-ORDER BY ?codePostal
+} GROUP BY ?ville ?codePostal HAVING (COUNT(?inspection) > 2) 
+ORDER BY COUNT(?inspection)

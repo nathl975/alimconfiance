@@ -16,7 +16,7 @@ mappings:
       - [a, 'https://schema.org/PostalAddress']
       - ['https://schema.org/streetAddress', $(adresse_2_ua)]
       - ['https://schema.org/postalCode', $(code_postal)]
-      - ['https://schema.org/addressLoality', $(libelle_commune)]
+      - ['https://schema.org/addressLocality', $(libelle_commune)]
       - ['rdfs:label', $(adresse_2_ua)]
   geo:
     subject: https://www.example.org/geo/$(adresse_2_ua)/
