@@ -1,0 +1,16 @@
+SELECT DISTINCT ?etablissement
+WHERE {
+
+    ?inspection a <https://www.example.org/Inspection>;
+        <https://www.example.org/evaluation> ?synthese;
+        <https://schema.org/LocalBusiness> ?etablissement.
+
+    ?autreInspection a <https://www.example.org/Inspection>;
+        <https://www.example.org/evaluation> ?autreSynthese;
+        <https://schema.org/LocalBusiness> ?etablissement.
+
+    ?inspection <https://schema.org/Date> ?dateInspection.
+    FILTER EXISTS{
+        ?autreInspection <https://schema.org/Date> ?dateInspection.
+    }
+}

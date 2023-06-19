@@ -1,0 +1,7 @@
+SELECT ?nom WHERE {
+	?etablissement a <https://schema.org/LocalBusiness>;
+        <https://schema.org/GeoCoordinates> ?coordinates;
+        <https://schema.org/legalName> ?nom.
+    ?coordinates <https://schema.org/PostalAddress> ?adresse.
+    ?adresse <https://schema.org/addressLoality> "NANTERRE".
+}

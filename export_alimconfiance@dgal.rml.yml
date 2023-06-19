@@ -7,7 +7,8 @@ mappings:
       - ['https://schema.org/legalName', $(app_libelle_etablissement)]
       - ['https://schema.org/iso6523Code', $(siret)]
       - ['https://schema.org/GeoCoordinates', geo]
-      - ['https://example.org/activite', activite]
+      - ['https://www.example.org/Activite', activite]
+      - ['https://www.example.org/TypeActivite', type_activite]
       - ['rdfs:label', $(app_libelle_etablissement)]
   adresse:
     subject: https://www.example.org/adresse/$(adresse_2_ua)/
@@ -22,20 +23,23 @@ mappings:
     predicateobjects: 
       - [a, 'https://schema.org/GeoCoordinates']
       - ['https://schema.org/PostalAddress', adresse]
-#      - ['https://schema.org/latitude', $(geores[0])]
-#      - ['https://schema.org/longitude', $(geores[1])]
+      - ['https://d-nb.info/standards/elementset/gnd#coordinates', $(geores)]
+      - ['rdfs:label', $(geores)]
   inspection:
     subject: https://www.example.org/inspection/$(numero_inspection)
     predicateobjects:
       - [a, 'https://www.example.org/Inspection']
       - ['https://schema.org/LocalBusiness', etablissement]
       - ['https://www.example.org/evaluation', $(synthese_eval_sanit)]
-      - ['https://www.example.org/date_inspection', $(date_inspection)]
+      - ['https://schema.org/Date', $(date_inspection)]
+      - ['rdfs:label', $(app_libelle_etablissement) $(date_inspection) $(synthese_eval_sanit)]
   activite:
     subject: https://www.example.org/activite/$(app_libelle_activite_etablissement)
     predicateobjects:
       - [a, 'https://www.example.org/Activite']
-      - ['https://www.example.org/activite/ods_activite', $(ods_type_activite)]
       - ['rdfs:label', $(app_libelle_activite_etablissement)]
-  
-
+  type_activite:
+    subject: https://www.example.org/type_activite/$(ods_type_activite)
+    predicateobjects:
+      - [a, 'https://www.example.org/TypeActivite']
+      - ['rdfs:label', $(ods_type_activite)]

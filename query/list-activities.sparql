@@ -1,0 +1,3 @@
+SELECT ?activite WHERE {
+    ?activite a <https://www.example.org/Activite>;
+}

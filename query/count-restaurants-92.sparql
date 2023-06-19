@@ -1,0 +1,8 @@
+SELECT (COUNT(?etablissement)as ?nb)  WHERE {
+    ?etablissement a <https://schema.org/LocalBusiness>;
+    <https://schema.org/GeoCoordinates> ?coordinates;
+    <https://www.example.org/Activite> <https://www.example.org/activite/Restaurant>.
+    ?coordinates <https://schema.org/PostalAddress> ?adresse.
+    ?adresse <https://schema.org/postalCode> ?codePostal.
+    FILTER (STRSTARTS(STR(?codePostal), "92"))
+} GROUP BY ?nb
